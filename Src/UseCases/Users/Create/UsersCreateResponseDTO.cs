@@ -2,7 +2,7 @@ using System;
 
 namespace PlanningPokerApi.Src.UseCases.Users.Create
 {
-  public class UsersCreateResponseDTO
+  public class UsersCreateResponseDto
   {
     public Guid Id { get; set; }
 

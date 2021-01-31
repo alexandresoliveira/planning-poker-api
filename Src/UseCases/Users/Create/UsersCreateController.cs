@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +16,7 @@ namespace PlanningPokerApi.Src.UseCases.Users.Create
     }
 
     [HttpPost("")]
-    public async Task<ActionResult<UsersCreateResponseDTO>> Handle(UsersCreateRequestDTO request)
+    public async Task<ActionResult<UsersCreateResponseDto>> Handle([FromBody] UsersCreateRequestDto request)
     {
       if (!ModelState.IsValid)
         return BadRequest(ModelState);

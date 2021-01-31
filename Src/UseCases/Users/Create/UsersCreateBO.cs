@@ -14,26 +14,26 @@ namespace PlanningPokerApi.Src.UseCases.Users.Create
       _repository = repository;
     }
 
-    internal async Task<UsersCreateResponseDTO> Execute(UsersCreateRequestDTO requestDTO)
+    internal async Task<UsersCreateResponseDto> Execute(UsersCreateRequestDto requestDto)
     {
-      var entity = CreateEntityWith(requestDTO);
+      var entity = CreateEntityWith(requestDto);
       var result = await _repository.Create(entity);
       return CreateResponseWith(result);
     }
 
-    private UserEntity CreateEntityWith(UsersCreateRequestDTO dto)
+    private UserEntity CreateEntityWith(UsersCreateRequestDto Dto)
     {
       var entity = new UserEntity();
-      entity.Name = dto.Name;
+      entity.Name = Dto.Name;
       return entity;
     }
 
-    private UsersCreateResponseDTO CreateResponseWith(UserEntity entity)
+    private UsersCreateResponseDto CreateResponseWith(UserEntity entity)
     {
-      var dto = new UsersCreateResponseDTO();
-      dto.Id = entity.Id;
-      dto.Name = entity.Name;
-      return dto;
+      var Dto = new UsersCreateResponseDto();
+      Dto.Id = entity.Id;
+      Dto.Name = entity.Name;
+      return Dto;
     }
   }
 }
