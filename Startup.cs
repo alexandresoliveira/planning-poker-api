@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using PlanningPokerApi.Src.Shared.Database.Contexts;
 using PlanningPokerApi.Src.Shared.Database.Repositories;
+using PlanningPokerApi.Src.UseCases.Users.Create;
 
 namespace PlanningPokerApi
 {
@@ -30,7 +31,8 @@ namespace PlanningPokerApi
     {
       services.AddDbContext<ApiContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("PlanningPokerApiConnectionUrl")));
       services.AddScoped<ApiContext, ApiContext>();
-      // services.Add(new ServiceDescriptor(typeof(IRepository<T extends BaseEntity>), new UserRepository()));
+      services.AddScoped<UserRepository, UserRepository>();
+      services.AddScoped<UsersCreateBO, UsersCreateBO>();
       services.AddControllers();
     }
 
