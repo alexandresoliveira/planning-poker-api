@@ -492,7 +492,7 @@ obj/
 /wwwroot/node_modules
 
 ### vscode ###
-.vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
