@@ -1,10 +1,11 @@
 using System.Threading.Tasks;
 using PlanningPokerApi.Src.Shared.Database.Repositories;
 using PlanningPokerApi.Src.Shared.Database.Entities;
+using PlanningPokerApi.Src.Shared.Business;
 
 namespace PlanningPokerApi.Src.UseCases.V1.Users.Create
 {
-  public class UsersCreateBO
+  public class UsersCreateBO : IBusiness<UsersCreateRequestDto, UsersCreateResponseDto>
   {
 
     private readonly IRepository<UserEntity> _repository;
@@ -14,7 +15,7 @@ namespace PlanningPokerApi.Src.UseCases.V1.Users.Create
       _repository = repository;
     }
 
-    internal async Task<UsersCreateResponseDto> Execute(UsersCreateRequestDto requestDto)
+    public async Task<UsersCreateResponseDto> Execute(UsersCreateRequestDto requestDto)
     {
       var entity = CreateEntityWith(requestDto);
       var result = await _repository.Create(entity);
