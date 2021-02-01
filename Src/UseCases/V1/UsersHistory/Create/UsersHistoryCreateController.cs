@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PlanningPokerApi.Src.Shared.Business;
 
 namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
 {
@@ -9,11 +10,11 @@ namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
   public class UsersHistoryCreateController : ControllerBase
   {
 
-    private UsersHistoryCreateBO _bo;
+    private IBusiness<UsersHistoryCreateRequestDto, UsersHistoryCreateResponseDto> _business;
 
-    public UsersHistoryCreateController(UsersHistoryCreateBO bo)
+    public UsersHistoryCreateController(IBusiness<UsersHistoryCreateRequestDto, UsersHistoryCreateResponseDto> business)
     {
-      _bo = bo;
+      _business = business;
     }
 
     [HttpPost("")]
@@ -22,7 +23,7 @@ namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
       if (!ModelState.IsValid)
         return BadRequest(ModelState);
 
-      return CreatedAtAction(nameof(Handle), await _bo.Execute(request));
+      return CreatedAtAction(nameof(Handle), await _business.Execute(request));
     }
   }
 }
