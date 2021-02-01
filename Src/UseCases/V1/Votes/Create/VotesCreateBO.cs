@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using PlanningPokerApi.Src.Shared.Database.Repositories;
 using PlanningPokerApi.Src.Shared.Database.Entities;
+using PlanningPokerApi.Src.Shared.Business;
 using PlanningPokerApi.Src.Shared.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace PlanningPokerApi.Src.UseCases.V1.Votes.Create
 {
-  public class VotesCreateBO
+  public class VotesCreateBO : IBusiness<VotesCreateRequestDto, VotesCreateResponseDto>
   {
 
     private IRepository<VoteEntity> _votesRepository;
