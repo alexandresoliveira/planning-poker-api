@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using PlanningPokerApi.Src.Shared.Database.Repositories;
+using PlanningPokerApi.Src.Shared.Database.Entities;
 using PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create;
 
 namespace PlanningPokerApi.Src.Shared.Injects
@@ -8,7 +9,7 @@ namespace PlanningPokerApi.Src.Shared.Injects
   {
     public void Invoke(IServiceCollection services)
     {
-      services.AddScoped<UsersHistoryRepository, UsersHistoryRepository>();
+      services.AddScoped<IRepository<UsersHistoryEntity>, UsersHistoryRepository>();
       services.AddScoped<UsersHistoryCreateBO, UsersHistoryCreateBO>();
     }
   }

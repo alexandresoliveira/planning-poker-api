@@ -7,7 +7,7 @@ using PlanningPokerApi.Src.Shared.Database.Contexts;
 
 namespace PlanningPokerApi.Src.Shared.Database.Repositories
 {
-  public class UserRepository : IRepository<UserEntity>
+  internal class UserRepository : IRepository<UserEntity>
   {
 
     private readonly ApiContext _context;

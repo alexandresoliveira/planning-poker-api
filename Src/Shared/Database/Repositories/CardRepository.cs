@@ -7,7 +7,7 @@ using PlanningPokerApi.Src.Shared.Database.Contexts;
 
 namespace PlanningPokerApi.Src.Shared.Database.Repositories
 {
-  public class CardRepository : IRepository<CardEntity>
+  internal class CardRepository : IRepository<CardEntity>
   {
 
     private ApiContext _context;

@@ -7,9 +7,9 @@ namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
   public class UsersHistoryCreateBO
   {
 
-    private UsersHistoryRepository _repository;
+    private IRepository<UsersHistoryEntity> _repository;
 
-    public UsersHistoryCreateBO(UsersHistoryRepository repository)
+    public UsersHistoryCreateBO(IRepository<UsersHistoryEntity> repository)
     {
       _repository = repository;
     }

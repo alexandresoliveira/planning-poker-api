@@ -13,17 +13,17 @@ namespace PlanningPokerApi.Src.UseCases.V1.Votes.Create
   public class VotesCreateBO
   {
 
-    private VotesRepository _votesRepository;
-    private UserRepository _userRepository;
-    private UsersHistoryRepository _usersHistoryRepository;
-    private CardRepository _cardRepository;
+    private IRepository<VoteEntity> _votesRepository;
+    private IRepository<UserEntity> _userRepository;
+    private IRepository<UsersHistoryEntity> _usersHistoryRepository;
+    private IRepository<CardEntity> _cardRepository;
     private IHubContext<VoteHub> _hubContext;
 
     public VotesCreateBO(
-      VotesRepository votesRepository,
-      UserRepository userRepository,
-      UsersHistoryRepository usersHistoryRepository,
-      CardRepository cardRepository,
+      IRepository<VoteEntity> votesRepository,
+      IRepository<UserEntity> userRepository,
+      IRepository<UsersHistoryEntity> usersHistoryRepository,
+      IRepository<CardEntity> cardRepository,
       IHubContext<VoteHub> hubContext)
     {
       _votesRepository = votesRepository;

@@ -7,9 +7,9 @@ namespace PlanningPokerApi.Src.UseCases.V1.Users.Create
   public class UsersCreateBO
   {
 
-    private UserRepository _repository;
+    private readonly IRepository<UserEntity> _repository;
 
-    public UsersCreateBO(UserRepository repository)
+    public UsersCreateBO(IRepository<UserEntity> repository)
     {
       _repository = repository;
     }

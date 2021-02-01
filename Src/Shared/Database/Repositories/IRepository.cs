@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace PlanningPokerApi.Src.Shared.Database.Repositories
 {
-  interface IRepository<T>
+  public interface IRepository<T>
   {
     Task<List<T>> All();
 

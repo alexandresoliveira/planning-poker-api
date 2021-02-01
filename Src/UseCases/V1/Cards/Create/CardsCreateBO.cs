@@ -7,9 +7,9 @@ namespace PlanningPokerApi.Src.UseCases.V1.Cards.Create
   public class CardsCreateBO
   {
 
-    private CardRepository _repository;
+    private IRepository<CardEntity> _repository;
 
-    public CardsCreateBO(CardRepository repository)
+    public CardsCreateBO(IRepository<CardEntity> repository)
     {
       _repository = repository;
     }
