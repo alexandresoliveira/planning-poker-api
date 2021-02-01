@@ -53,7 +53,7 @@ namespace PlanningPokerApi.Src.Shared.Database.Contexts
 
               // mark property as "don't touch"
               // we don't want to update on a Modify operation
-              entry.Property("CreatedOn").IsModified = false;
+              entry.Property("CreatedAt").IsModified = false;
               break;
 
             case EntityState.Added:
