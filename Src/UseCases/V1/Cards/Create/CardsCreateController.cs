@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PlanningPokerApi.Src.Shared.Business;
 
 namespace PlanningPokerApi.Src.UseCases.V1.Cards.Create
 {
@@ -9,11 +10,11 @@ namespace PlanningPokerApi.Src.UseCases.V1.Cards.Create
   public class CardsCreateController : ControllerBase
   {
 
-    private CardsCreateBO _bo;
+    private IBusiness<CardsCreateRequestDto, CardsCreateResponseDto> _business;
 
-    public CardsCreateController(CardsCreateBO bo)
+    public CardsCreateController(IBusiness<CardsCreateRequestDto, CardsCreateResponseDto> business)
     {
-      _bo = bo;
+      _business = business;
     }
 
     [HttpPost("")]
@@ -22,7 +23,7 @@ namespace PlanningPokerApi.Src.UseCases.V1.Cards.Create
       if (!ModelState.IsValid)
         return BadRequest(ModelState);
 
-      return CreatedAtAction(nameof(Handle), await _bo.Execute(request));
+      return CreatedAtAction(nameof(Handle), await _business.Execute(request));
     }
   }
 }
