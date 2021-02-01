@@ -8,16 +8,16 @@ namespace PlanningPokerApi.Src.Shared.Database.Entities
   public class VoteEntity : BaseEntity
   {
 
-    [Required(ErrorMessage = "The {0} is required.")]
+    [Required(ErrorMessage = "{0} is required.")]
     [Column("user_id")]
-    public UserEntity user { get; set; }
+    public UserEntity User { get; set; }
 
-    [Required(ErrorMessage = "The {0} is required.")]
+    [Required(ErrorMessage = "{0} is required.")]
     [Column("card_id")]
-    public CardEntity card { get; set; }
+    public CardEntity Card { get; set; }
 
-    [Required(ErrorMessage = "The {0} is required.")]
+    [Required(ErrorMessage = "{0} is required.")]
     [Column("users_history_id")]
-    public UsersHistoryEntity usersHistory { get; set; }
+    public UsersHistoryEntity UsersHistory { get; set; }
   }
 }

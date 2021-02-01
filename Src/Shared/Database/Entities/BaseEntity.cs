@@ -10,11 +10,9 @@ namespace PlanningPokerApi.Src.Shared.Database.Entities
     [Column("id")]
     public Guid Id { get; set; }
 
-    [Timestamp]
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }
 
-    [Timestamp]
     [Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
   }

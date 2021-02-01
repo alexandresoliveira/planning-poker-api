@@ -1,41 +1,40 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using PlanningPokerApi.Src.Shared.Database.Entities;
-
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using PlanningPokerApi.Src.Shared.Database.Contexts;
 
 namespace PlanningPokerApi.Src.Shared.Database.Repositories
 {
-  public class CardRepository : IRepository<CardEntity>
+  public class VotesRepository : IRepository<VoteEntity>
   {
 
     private ApiContext _context;
 
-    public CardRepository(ApiContext context)
+    public VotesRepository(ApiContext context)
     {
       _context = context;
     }
 
-    public Task<List<CardEntity>> All()
+    public Task<List<VoteEntity>> All()
     {
       throw new NotImplementedException();
     }
 
-    public async Task<CardEntity> ById(Guid id)
+    public Task<VoteEntity> ById(Guid id)
     {
-      var result = await _context.Cards.FindAsync(id);
-      return result;
+      throw new NotImplementedException();
     }
 
-    public async Task<CardEntity> Create(CardEntity entity)
+    public async Task<VoteEntity> Create(VoteEntity entity)
     {
-      var result = await _context.Cards.AddAsync(entity);
+      var result = await _context.Votes.AddAsync(entity);
       await _context.SaveChangesAsync();
       return result.Entity;
     }
 
-    public Task Delete(CardEntity entity)
+    public Task Delete(VoteEntity entity)
     {
       throw new NotImplementedException();
     }
@@ -45,7 +44,7 @@ namespace PlanningPokerApi.Src.Shared.Database.Repositories
       throw new NotImplementedException();
     }
 
-    public Task Update(CardEntity entity)
+    public Task Update(VoteEntity entity)
     {
       throw new NotImplementedException();
     }
