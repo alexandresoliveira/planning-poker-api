@@ -10,7 +10,7 @@ namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
   public class UsersHistoryCreateController : ControllerBase
   {
 
-    private IBusiness<UsersHistoryCreateRequestDto, UsersHistoryCreateResponseDto> _business;
+    private readonly IBusiness<UsersHistoryCreateRequestDto, UsersHistoryCreateResponseDto> _business;
 
     public UsersHistoryCreateController(IBusiness<UsersHistoryCreateRequestDto, UsersHistoryCreateResponseDto> business)
     {

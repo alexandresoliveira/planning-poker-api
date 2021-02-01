@@ -10,7 +10,7 @@ namespace PlanningPokerApi.Src.UseCases.V1.Votes.Create
   public class VotesCreateController : ControllerBase
   {
 
-    private IBusiness<VotesCreateRequestDto, VotesCreateResponseDto> _business;
+    private readonly IBusiness<VotesCreateRequestDto, VotesCreateResponseDto> _business;
 
     public VotesCreateController(IBusiness<VotesCreateRequestDto, VotesCreateResponseDto> business)
     {
