@@ -6,21 +6,21 @@ using PlanningPokerApi.Src.Shared.Database.Entities;
 using PlanningPokerApi.Src.Shared.Helpers.Jwt;
 using PlanningPokerApi.Src.Shared.Helpers.Cryptography;
 
-namespace PlanningPokerApi.Src.UseCases.V1.Authentication
+namespace PlanningPokerApi.Src.UseCases.V1.Authentication.Login
 {
-  public class AuthenticationBusiness : IBusiness<AuthenticationRequestDto, AuthenticationResponseDto>
+  public class AuthenticationLoginBusiness : IBusiness<AuthenticationLoginRequestDto, AuthenticationLoginResponseDto>
   {
 
     private readonly IRepository<UserEntity> _repository;
     private readonly JwtHelper _jwtHelper;
 
-    public AuthenticationBusiness(IRepository<UserEntity> repository, JwtHelper jwtHelper)
+    public AuthenticationLoginBusiness(IRepository<UserEntity> repository, JwtHelper jwtHelper)
     {
       _repository = repository;
       _jwtHelper = jwtHelper;
     }
 
-    public async Task<AuthenticationResponseDto> Execute(AuthenticationRequestDto dto)
+    public async Task<AuthenticationLoginResponseDto> Execute(AuthenticationLoginRequestDto dto)
     {
       var parameters = new Dictionary<string, object>()
       {
@@ -38,9 +38,9 @@ namespace PlanningPokerApi.Src.UseCases.V1.Authentication
       return CreateDtoWith(users[0]);
     }
 
-    private AuthenticationResponseDto CreateDtoWith(UserEntity userEntity)
+    private AuthenticationLoginResponseDto CreateDtoWith(UserEntity userEntity)
     {
-      var response = new AuthenticationResponseDto();
+      var response = new AuthenticationLoginResponseDto();
       response.Name = userEntity.Name;
       response.Token = _jwtHelper.GenerateToken(userEntity);
       return response;

@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace PlanningPokerApi.Src.UseCases.V1.Authentication
+namespace PlanningPokerApi.Src.UseCases.V1.Authentication.Login
 {
-  public class AuthenticationRequestDto
+  public class AuthenticationLoginRequestDto
   {
 
     [Required(ErrorMessage = "{0} is required")]

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using PlanningPokerApi.Src.Shared.Business;
 
 namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
@@ -18,6 +19,7 @@ namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
     }
 
     [HttpPost("")]
+    [Authorize]
     public async Task<ActionResult<UsersHistoryCreateResponseDto>> Handle([FromBody] UsersHistoryCreateRequestDto request)
     {
       if (!ModelState.IsValid)
