@@ -20,6 +20,8 @@ namespace PlanningPokerApi.Src.UseCases.V1.Cards.Create
     }
 
     [HttpPost("")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [Authorize]
     public async Task<ActionResult<CardsCreateResponseDto>> Handle(
       [FromBody] CardsCreateRequestDto request)

@@ -18,6 +18,8 @@ namespace PlanningPokerApi.Src.UseCases.V1.Users.Create
     }
 
     [HttpPost("")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     public async Task<ActionResult<UsersCreateResponseDto>> Handle([FromBody] UsersCreateRequestDto request)
     {
       if (!ModelState.IsValid)
