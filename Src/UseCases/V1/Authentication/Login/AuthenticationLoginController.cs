@@ -7,6 +7,8 @@ namespace PlanningPokerApi.Src.UseCases.V1.Authentication.Login
 
   [ApiController]
   [Route("api/v1/authentication/login")]
+  [Consumes("application/json")]
+  [Produces("application/json")]
   public class AuthenticationLoginController : ControllerBase
   {
 

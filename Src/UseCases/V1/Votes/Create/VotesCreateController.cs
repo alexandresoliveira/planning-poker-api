@@ -21,6 +21,8 @@ namespace PlanningPokerApi.Src.UseCases.V1.Votes.Create
     }
 
     [HttpPost("")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [Authorize]
     public async Task<ActionResult<VotesCreateResponseDto>> Handle([FromBody] VotesCreateRequestDto request)
     {

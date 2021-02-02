@@ -19,6 +19,8 @@ namespace PlanningPokerApi.Src.UseCases.V1.UsersHistory.Create
     }
 
     [HttpPost("")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [Authorize]
     public async Task<ActionResult<UsersHistoryCreateResponseDto>> Handle([FromBody] UsersHistoryCreateRequestDto request)
     {
