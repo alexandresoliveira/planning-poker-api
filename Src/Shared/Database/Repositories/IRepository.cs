@@ -8,13 +8,13 @@ namespace PlanningPokerApi.Src.Shared.Database.Repositories
   {
     Task<List<T>> All();
 
+    Task<List<T>> ByParams(IDictionary<string, object> parameters);
+
     Task<T> ById(Guid id);
 
     Task<T> Create(T entity);
 
     Task Update(T entity);
-
-    Task Delete(T entity);
 
     Task Delete(Guid id);
   }

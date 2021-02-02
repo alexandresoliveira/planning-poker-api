@@ -1,7 +1,9 @@
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using PlanningPokerApi.Src.Shared.Database.Repositories;
 using PlanningPokerApi.Src.Shared.Database.Entities;
 using PlanningPokerApi.Src.Shared.Business;
+using PlanningPokerApi.Src.Shared.Helpers.Cryptography;
 
 namespace PlanningPokerApi.Src.UseCases.V1.Users.Create
 {
@@ -15,26 +17,42 @@ namespace PlanningPokerApi.Src.UseCases.V1.Users.Create
       _repository = repository;
     }
 
-    public async Task<UsersCreateResponseDto> Execute(UsersCreateRequestDto requestDto)
+    public async Task<UsersCreateResponseDto> Execute(UsersCreateRequestDto dto)
     {
-      var entity = CreateEntityWith(requestDto);
+      var parameters = new Dictionary<string, object>()
+      {
+        { "Email", dto.Email }
+      };
+      var users = await _repository.ByParams(parameters);
+
+      if (users.Count > 0)
+      {
+        throw new System.Exception("This email already use");
+      }
+
+      var entity = CreateEntityWith(dto);
+
       var result = await _repository.Create(entity);
+
       return CreateResponseWith(result);
     }
 
-    private UserEntity CreateEntityWith(UsersCreateRequestDto Dto)
+    private UserEntity CreateEntityWith(UsersCreateRequestDto dto)
     {
       var entity = new UserEntity();
-      entity.Name = Dto.Name;
+      entity.Name = dto.Name;
+      entity.Email = dto.Email;
+      entity.Password = new HashHelper().GetCypher(dto.Password);
       return entity;
     }
 
     private UsersCreateResponseDto CreateResponseWith(UserEntity entity)
     {
-      var Dto = new UsersCreateResponseDto();
-      Dto.Id = entity.Id;
-      Dto.Name = entity.Name;
-      return Dto;
+      var dto = new UsersCreateResponseDto();
+      dto.Id = entity.Id;
+      dto.Name = entity.Name;
+      dto.Email = entity.Email;
+      return dto;
     }
   }
 }

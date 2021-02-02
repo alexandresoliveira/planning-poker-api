@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using PlanningPokerApi.Src.Shared.Database.Entities;
 using System.Threading.Tasks;
@@ -29,17 +30,36 @@ namespace PlanningPokerApi.Src.Shared.Database.Repositories
       return user;
     }
 
+    public async Task<List<UserEntity>> ByParams(IDictionary<string, object> parameters)
+    {
+      var whereArgs = "select * from users where ";
+      var and = "";
+
+      foreach (var p in parameters)
+      {
+        if (p.Value is Array)
+        {
+          var valuesParam = (string[])p.Value;
+          var condition = valuesParam[0];
+          var value = valuesParam[1];
+          whereArgs += $" {and} {p.Key.ToLower()} {condition} '{value}' ";
+        }
+        else
+        {
+          whereArgs += $" {and} {p.Key.ToLower()} = '{p.Value}' ";
+        }
+        and = "and";
+      }
+
+      var users = await _context.Users.FromSqlRaw(whereArgs).ToListAsync();
+      return users;
+    }
+
     public async Task<UserEntity> Create(UserEntity entity)
     {
       var result = _context.Users.Add(entity);
       await _context.SaveChangesAsync();
       return result.Entity;
-    }
-
-    public async Task Delete(UserEntity entity)
-    {
-      _context.Users.Remove(entity);
-      await _context.SaveChangesAsync();
     }
 
     public async Task Delete(Guid id)

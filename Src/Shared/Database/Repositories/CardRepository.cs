@@ -28,16 +28,16 @@ namespace PlanningPokerApi.Src.Shared.Database.Repositories
       return result;
     }
 
+    public Task<List<CardEntity>> ByParams(IDictionary<string, object> parameters)
+    {
+      throw new NotImplementedException();
+    }
+
     public async Task<CardEntity> Create(CardEntity entity)
     {
       var result = await _context.Cards.AddAsync(entity);
       await _context.SaveChangesAsync();
       return result.Entity;
-    }
-
-    public Task Delete(CardEntity entity)
-    {
-      throw new NotImplementedException();
     }
 
     public Task Delete(Guid id)
