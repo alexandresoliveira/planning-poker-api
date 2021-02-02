@@ -19,6 +19,13 @@ namespace PlanningPokerApi.Src.Shared.Database.Contexts
     public ApiContext(DbContextOptions<ApiContext> options) : base(options)
     { }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<UserEntity>()
+          .HasIndex(b => b.Email)
+          .IsUnique();
+    }
+
     public override int SaveChanges(bool acceptAllChangesOnSuccess)
     {
       OnBeforeSaving();

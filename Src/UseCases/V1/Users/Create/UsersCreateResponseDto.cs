@@ -7,5 +7,7 @@ namespace PlanningPokerApi.Src.UseCases.V1.Users.Create
     public Guid Id { get; set; }
 
     public string Name { get; set; }
+
+    public string Email { get; set; }
   }
 }

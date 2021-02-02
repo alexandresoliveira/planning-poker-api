@@ -29,17 +29,16 @@ namespace PlanningPokerApi.Src.Shared.Database.Repositories
       return user;
     }
 
+    public Task<List<UsersHistoryEntity>> ByParams(IDictionary<string, object> parameters)
+    {
+      throw new NotImplementedException();
+    }
+
     public async Task<UsersHistoryEntity> Create(UsersHistoryEntity entity)
     {
       var result = _context.UsersHistories.Add(entity);
       await _context.SaveChangesAsync();
       return result.Entity;
-    }
-
-    public async Task Delete(UsersHistoryEntity entity)
-    {
-      _context.UsersHistories.Remove(entity);
-      await _context.SaveChangesAsync();
     }
 
     public async Task Delete(Guid id)
